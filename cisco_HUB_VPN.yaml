@@ -7,7 +7,7 @@
   tasks:
    - name: Config_Tunnle0 
      ios_config:
-       parensts: 
+       parents: 
         - int tunnel0 
        lines: 
         - ip address "{{tun_address}}" 255.255.255.0 
@@ -24,14 +24,14 @@
 
    - name: Config_OSPF
      ios_config:
-        parensts: 
+        parents: 
          - router ospf 1 
         lines: 
          - network "{{tun_address}}" 0.0.0.255 area 0
   
    - name: Config_Crypto_policy
      ios_config:
-        parensts: 
+        parents: 
          - crypto isakmp policy 1
         lines: 
          - encr aes 256
@@ -42,7 +42,7 @@
 
    - name: Config_Profile
      ios_config:
-        parensts: 
+        parents: 
          - crypto ipsec profile DMVPN-prof
         lines: 
          - set transform-set DMVPN-IPsec 
@@ -50,7 +50,7 @@
 
    - name: Tun_Cathc_IPsec
      ios_config:
-        parensts: 
+        parents: 
          - int tun 0
         lines: 
          - tunnel protection ipsec profile DMVPN-prof
