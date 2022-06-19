@@ -1,0 +1,8 @@
+[irk_office1_ciscort_01]
+192.168.0.20
+
+[irk_office1_ciscort_01:vars]
+tun_address=172.16.10.1 
+net_id=666
+tun_int= e0/1
+tun_key=606
