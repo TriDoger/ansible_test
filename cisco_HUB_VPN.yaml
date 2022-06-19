@@ -15,10 +15,10 @@
          - ip mtu 1440 
          - ip nhrp authentication cisDMVPN 
          - ip nhrp map multicast dynamic 
-         - ip nhrp network-id "{{net_id}}"
-         - tunnel source "{{tun_int}}"
+         - ip nhrp network-id {{net_id}}
+         - tunnel source {{tun_int}}
          - tunnel mode gre multipoint 
-         - tunnel key "{{tun_key}}" 
+         - tunnel key {{tun_key}} 
          - ip ospf priority 10
          - ip ospf network broadcast 
 
@@ -27,7 +27,7 @@
         parents: 
          - router ospf 1 
         lines: 
-         - network "{{tun_address}}" 0.0.0.255 area 0
+         - network {{tun_address}} 0.0.0.255 area 0
   
    - name: Config_Crypto_policy
      ios_config:
