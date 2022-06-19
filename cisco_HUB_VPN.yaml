@@ -10,8 +10,8 @@
        parents: 
          - int tunnel0 
        lines: 
-         - ip address "{{tun_address}}" 255.255.255.0 
          - no ip redirects 
+         - ip address "{{tun_address}}" 255.255.255.0 
          - ip mtu 1440 
          - ip nhrp authentication cisDMVPN 
          - ip nhrp map multicast dynamic 
