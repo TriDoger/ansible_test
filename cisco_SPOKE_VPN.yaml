@@ -25,7 +25,6 @@
          - tunnel source Ethernet0/1 
          - tunnel mode gre multipoint 
          - tunnel key {{tun_key}} 
-         - tunnel protection ipsec profile DMVPN-prof
 
    - name: Config_OSPF
      ios_config:
