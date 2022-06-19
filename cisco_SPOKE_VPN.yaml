@@ -20,6 +20,6 @@
          - ip nhrp nhs {{hub_tun_address}} 
          - ip ospf network broadcast 
          - ip ospf priority 0 
-         - tunnel source Ethernet {{tun_int}}
+         - tunnel source {{tun_int}}
          - tunnel mode gre multipoint 
          - tunnel key {{tun_key}} 
