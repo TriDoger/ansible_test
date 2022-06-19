@@ -33,8 +33,8 @@
         lines: 
          - network {{tun_address}} 0.0.0.255 area 0
   
-   - name: Config_Crypto_policy
-     ios_config:
+    - name: Config_Crypto_policy
+      ios_config:
         parents: 
          - crypto isakmp policy 1
         lines: 
@@ -44,16 +44,16 @@
          - crypto isakmp key StrongPasswords address 0.0.0.0 0.0.0.0
          - crypto ipsec transform-set DMVPN-IPsec esp-aes 256 esp-sha-hmac 
 
-   - name: Config_Profile
-     ios_config:
+    - name: Config_Profile
+      ios_config:
         parents: 
          - crypto ipsec profile DMVPN-prof
         lines: 
          - set transform-set DMVPN-IPsec 
          - set pfs group2
 
-   - name: Tun_Cathc_IPsec
-     ios_config:
+    - name: Tun_Cathc_IPsec
+      ios_config:
         parents: 
          - int tun 0
         lines: 
