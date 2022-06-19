@@ -1,6 +1,7 @@
 ---
 - name: Conf_Spoke
   hosts: spokes
+  become_method: enable
   gather_facts: false
   connection: local
   
