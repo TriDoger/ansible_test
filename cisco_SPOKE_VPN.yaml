@@ -2,7 +2,7 @@
 - name: Conf_Spoke
   hosts: all
   gather_facts: false
-  connection: network_cli
+  connection: local
   
   tasks:
    - name: Config_Tunnle0 
@@ -20,6 +20,6 @@
          - ip nhrp nhs {{hub_tun_address}} 
          - ip ospf network broadcast 
          - ip ospf priority 0 
-         - tunnel source Ethernet0/1 
+         - tunnel source Ethernet {{tun_int}}
          - tunnel mode gre multipoint 
          - tunnel key {{tun_key}} 
