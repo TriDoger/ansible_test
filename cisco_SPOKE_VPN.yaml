@@ -7,7 +7,7 @@
   tasks:
    - name: Config_Tunnle0 
      ios_config:
-       parents: 
+       parents:
          - int tunnel0 
        lines: 
          - ip address {{tun_address}} 255.255.255.0 
