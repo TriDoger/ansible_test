@@ -1,0 +1,62 @@
+---
+- name: Conf_HUB
+  hosts: all
+  gather_facts: false
+  connection: local
+  
+  tasks:
+   - name: Config_Tunnle0 
+     ios_config:
+       parents: 
+         - int tunnel0 
+       lines: 
+         - ip address {{tun_address}} 255.255.255.0 
+         - no ip redirects 
+         - ip mtu 1440 
+         - ip nhrp map multicast dynamic 
+         - ip nhrp map {{hub_tun_address}} {{hub_address}} 
+         - ip nhrp map multicast {{hub_address}} 
+         - ip nhrp network-id {{net_id}} 
+         - ip nhrp nhs {{hub_tun_address}} 
+         - ip ospf network broadcast 
+         - ip ospf hello-interval 30 
+         - ip ospf priority 0 
+         - tunnel source Ethernet0/1 
+         - tunnel mode gre multipoint 
+         - tunnel key {{tun_key}} 
+         - tunnel protection ipsec profile DMVPN-prof
+
+   - name: Config_OSPF
+     ios_config:
+        parents: 
+         - router ospf 1 
+        lines: 
+         - network {{tun_address}} 0.0.0.255 area 0
+  
+   - name: Config_Crypto_policy
+     ios_config:
+        parents: 
+         - crypto isakmp policy 1
+        lines: 
+         - encr aes 256
+         - authentication pre-share
+         - group 2
+         - crypto isakmp key StrongPasswords address 0.0.0.0 0.0.0.0
+         - crypto ipsec transform-set DMVPN-IPsec esp-aes 256 esp-sha-hmac 
+
+   - name: Config_Profile
+     ios_config:
+        parents: 
+         - crypto ipsec profile DMVPN-prof
+        lines: 
+         - set transform-set DMVPN-IPsec 
+         - set pfs group2
+
+   - name: Tun_Cathc_IPsec
+     ios_config:
+        parents: 
+         - int tun 0
+        lines: 
+         - tunnel protection ipsec profile DMVPN-prof
+
+
