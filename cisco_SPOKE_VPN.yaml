@@ -1,7 +1,6 @@
 ---
 - name: Conf_Spoke
   hosts: all
-  become_method: enable
   gather_facts: false
   connection: local
   
