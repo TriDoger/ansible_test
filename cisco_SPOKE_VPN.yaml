@@ -1,5 +1,5 @@
 ---
-- name: Conf_HUB
+- name: Conf_Spoke
   hosts: all
   gather_facts: false
   connection: local
