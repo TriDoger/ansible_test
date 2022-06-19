@@ -2,7 +2,7 @@
 - name: Conf_Spoke
   hosts: all
   gather_facts: false
-  connection: local
+  connection: network_cli
   
   tasks:
    - name: Config_Tunnle0 
