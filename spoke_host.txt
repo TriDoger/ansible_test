@@ -1,35 +1,28 @@
 [oms_office4_ciscort_01]
 125.30.20.22
-
+[kras_office3_ciscort_01]
+125.30.30.22
+[bel_office2_ciscort_01]
+125.30.40.22
+[spokes:children]
+bel_office4_ciscort_01
+kras_office3_ciscort_01
+oms_office4_ciscort_01
 [oms_office4_ciscort_01:vars]
 tun_address=172.16.10.2 
 net_id=666
 tun_int= e0/2
 tun_key=606
-
-[kras_office3_ciscort_01]
-125.30.30.22
-
 [kras_office3_ciscort_01:vars]
 tun_address=172.16.10.e 
 net_id=666
 tun_int= e1/0
 tun_key=606
-
-[bel_office2_ciscort_01]
-125.30.40.22
-
 [bel_office2_ciscort_01:vars]
 tun_address=172.16.10.4
 net_id=666
 tun_int= e0/3
 tun_key=606
-
-[spokes:children]
-bel_office4_ciscort_01
-kras_office3_ciscort_01
-oms_office4_ciscort_01
-
 [spokes:vars]
 hub_tun_address=172.16.10.1
 hub_address=125.30.10.22

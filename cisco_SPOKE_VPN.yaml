@@ -1,6 +1,6 @@
 ---
 - name: Conf_Spoke
-  hosts: all
+  hosts: spokes
   gather_facts: false
   connection: local
   
